@@ -1,32 +1,27 @@
 project "ImGui"
 	kind "StaticLib"
+	staticruntime "on"
 	language "C++"
-	--staticruntime "off"
+	cppdialect "C++17"
 	warnings "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-    --pchheader "lmpch.h"
-	--pchsource "lmpch.cpp"
-
 	files
 	{
-        --"*.h",
-        --"*.cpp"
-        --"imgui_demo.cpp",
-        "*.h",
-        "*.cpp",
-        "premake5.lua",
-        "backends/imgui_impl_opengl3.h",
-        "backends/imgui_impl_opengl3.cpp",
-        "backends/imgui_impl_glfw.h",
-        "backends/imgui_impl_glfw.cpp"
+		"*.h",
+		"*.cpp",
+		"premake5.lua",
+		"backends/imgui_impl_opengl3.h",
+		"backends/imgui_impl_opengl3.cpp",
+		"backends/imgui_impl_glfw.h",
+		"backends/imgui_impl_glfw.cpp"
 	}
 
-    includedirs 
+	includedirs 
 	{
-        "",
+		"",
 		"../GLFW/include"
 	}
 
@@ -37,24 +32,6 @@ project "ImGui"
 
 	filter "system:windows"
 		systemversion "latest"
-		cppdialect "C++17"
-		staticruntime "On"
-
-        defines
-		{
-			"LEMON_PLATFORM_WINDOWS"
-		}
-
-    filter "system:windows"
-		systemversion "latest"
-		cppdialect "C++17"
-		staticruntime "On"
-
-	filter "system:linux"
-		pic "On"
-		systemversion "latest"
-		cppdialect "C++17"
-		staticruntime "On"
 
 	filter "configurations:Debug"
 		runtime "Debug"
